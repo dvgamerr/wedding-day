@@ -98,7 +98,7 @@ a:hover {
       rgba(83, 81, 124, 0.1),
       rgb(83, 81, 124, 0.1)
     ),
-    url('images/pre-wedding-mobile.png') no-repeat 48% center/cover;
+    url('/images/pre-wedding-mobile.png') no-repeat 48% center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -115,7 +115,7 @@ a:hover {
         rgba(83, 81, 124, 0.1),
         rgb(83, 81, 124, 0.1)
       ),
-      url('images/pre-wedding-wide.png') no-repeat center/cover;
+      url('/images/pre-wedding-wide.png') no-repeat center/cover;
   }
 }
 
