@@ -1,50 +1,181 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+
 import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&family=Pattaya&display=swap" />
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
+    crossorigin="anonymous" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
+		<script src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 	</head>
 	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<header class="cover">
+			<div class="hero-text">
+				<mux-video playback-id="EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs" />
+				<div class="tagline">มาร่วมแสดงความยินดีกับเรา!</div>
+				<h1>{SITE_TITLE}</h1>
+				<div class="date">4 มีนาคม พ.ศ. 2566</div>
+			</div>
+			<div class="arrow"></div>
+		</header>
+		<main id="main">
+			<section class="locations-section">
+				<h2>สถานที่</h2>
+				<div class="location-container">
+					<div class="location">
+						<a href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" target="_blank">
+							<div class="location-text">
+								<h3>งานพิธี</h3>
+								<img src="images/cultures.svg" alt="Ceremony" />
+								<div>4 มีนาคม 2566</div>
+								<div>148 หมู่ 4 ต.วังคีรี อ.ห้วยยอด จ.ตรัง</div>
+							</div>
+						</a>
+					</div>
+					<div class="location">
+						<a href="https://goo.gl/maps/eYxUpWDrWnShij15A" target="_blank">
+							<div class="location-text">
+								<h3>งานเลี้ยง</h3>
+								<img src="images/champagne.svg" alt="Party" />
+								<div>25 มีนาคม 2566</div>
+								<div>5 หมู่ 5 ต.ปากตะโก อ.ทุ่งตะโก จ.ชุมพร</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</section>
+			<section class="program">
+				<h2>Program</h2>
+				<div class="program-wrapper">
+					<ul>
+						<li>13:45 – Gyülekezés a Templomnál</li>
+						<li>14:00 – Ceremónia</li>
+						<li>14:30 – Indulás autós konvojjal a Viktória fogadóba</li>
+						<li>14:45 – Gratulációk fogadása a sátorban</li>
+						<li>15:30 – Fotózás</li>
+						<li>16:30 – Vacsora</li>
+						<li>18:00 – Torta</li>
+						<li>21:00 – Buli vége</li>
+					</ul>
+				</div>
+			</section>
+			<section class="konvoj">
+				<h2>แผนที่นำทาง</h2>
+			</section>
+			<section class="faq">
+				<h2>คำถาม & คำตอบ</h2>
+				<div class="question-group-container">
+					<div class="question-group">
+						<h3>การเดินทางและที่พัก</h3>
+						<p class="question">ฉันจะไปที่นั่นได้อย่างไร?</p>
+						<p class="answer">คุณสามารถเดินทางรถยนต์</p>
+						<p class="question">ฉันสามารถจอดรถได้ที่ไหน?</p>
+						<p class="answer">มีที่จอดรถได้แน่นอน</p>
+						<p class="question">ฉันสามารถจองที่พักสำหรับคืนนึงได้หรือไม่?</p>
+						<p class="answer">ขออภัยที่เราไม่มีที่พักให้ แต่ถ้าหากคุณไม่สามารถหาที่พักเองได้ โปรดแจ้งเรา เราจะหาที่พักให้คุณเอง</p>
+					</div>
+					<div class="question-group">
+						<h3>การเฉลิมฉลองและอาหาร</h3>
+						<p class="question">ฉันสามารถนำของขวัญสำหรับคู่บ่าวสาวได้หรือไม่?
+						</p>
+						<p class="answer">เรายินดีสนับสนุนทุกรูปแบบ!</p>
+						<p class="question">จะใส่ชุดอะไรดี มีระเบียบการแต่งตัวไหม?</p>
+						<p class="answer">แต่งกายเรียบร้อยแต่สบายตัว</p>
+					</div>
+					<div class="question-group">
+						<h3>สิ่งเล็กน้อยอื่น ๆ</h3>
+						<p class="question">ถ่ายรูปลงเฟสบุ๊คได้ไหม?</p>
+						<p class="answer">แน่นอน และรบกวนใส่ hashtag <code>#kkwedding</code></p>
+					</div>
+				</div>
+			</section>
+			<section class="contact">
+				<h2>Kontakt</h2>
+				<p>หากคุณมีคำถามใด ๆ โปรดติดต่อเราตามรายละเอียดการติดต่อที่ให้ไว้ในคำเชิญทางอีเมล!</p>
+				<!-- Add to Calendar Button code -->
+				<div title="Add to Calendar" class="addeventatc">
+					<span class="calendar-text">เพิ่มนัดงานพิธีในปฏิทิน</span>
+					<span class="start">04-03-2023 09:09</span>
+					<span class="end">04-03-2023 18:00</span>
+					<span class="timezone">Asia/Bangkok</span>
+					<span class="title">งานแต่งงาน - {SITE_TITLE}</span>
+					<span class="description">งานแต่งงานของ {SITE_TITLE}</span>
+					<span class="location">Inárcsi Szűz Mária neve templom</span>
+				</div>
+				<div title="Add to Calendar" class="addeventatc">
+					<span class="calendar-text">เพิ่มนัดงานเลี้ยงในปฏิทิน</span>
+					<span class="start">25-03-2023 08:00</span>
+					<span class="end">25-03-2023 12:00</span>
+					<span class="timezone">Asia/Bangkok</span>
+					<span class="title">งานแต่งงาน - {SITE_TITLE}</span>
+					<span class="description">งานแต่งงานของ {SITE_TITLE}</span>
+					<span class="location">Inárcsi Szűz Mária neve templom</span>
+				</div>
+			</section>
 		</main>
-		<Footer />
+		<footer>
+			<div class="smallText">
+				<p>
+					<small>
+						<a href="https://mr.touno.io" rel="noopener noreferrer" target="_blank">
+							Kananek T.</a> Bangkok, 2023
+					</small>
+				</p>
+			</div>
+			<div class="social">
+				<a href="https://github.com/dvgamerr" target="_blank" rel="noopener">
+					<i class="fab fa-github fa-lg"></i>
+				</a>
+				<a href="https://www.linkedin.com/in/kananek-thongkam" target="_blank" rel="noopener">
+					<i class="fab fa-linkedin fa-lg"></i>
+				</a>
+				<a href="https://www.instagram.com/dvgamerr" target="_blank" rel="noopener">
+					<i class="fab fa-instagram fa-lg"></i>
+				</a>
+			</div>
+		</footer>
+		<script>
+			// Arrow script
+			let arrow = document.querySelector('.arrow');
+			let el = document.querySelector('#main');
+
+			arrow.addEventListener('click', function () {
+				el.scrollIntoView({ behavior: 'smooth' });
+			});
+
+			// Lightbox script
+			const lightbox = document.createElement('div');
+			lightbox.id = 'lightbox';
+			document.body.appendChild(lightbox);
+
+			// const img = document.querySelector('#konvoj');
+			// img.addEventListener('click', () => {
+			// 	lightbox.classList.add('active');
+			// 	const newImg = document.createElement('img');
+			// 	newImg.src = img.src;
+			// 	while (lightbox.firstChild) {
+			// 		lightbox.removeChild(lightbox.firstChild);
+			// 	}
+			// 	lightbox.appendChild(newImg);
+			// });
+
+			// Close lightbox only when clicked outside of img
+			lightbox.addEventListener('click', (e) => {
+				if (e.target !== e.currentTarget) return;
+				lightbox.classList.remove('active');
+			});
+		</script>
 	</body>
 </html>
