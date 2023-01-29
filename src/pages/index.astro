@@ -32,7 +32,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 		</header>
 		<main id="main">
 			<section class="locations-section">
-				<h2>สถานที่</h2>
+				<h2>สถานที่ & แผนที่นำทาง</h2>
 				<div class="location-container">
 					<div class="location">
 						<a href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" target="_blank">
@@ -57,22 +57,20 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 				</div>
 			</section>
 			<section class="program">
-				<h2>Program</h2>
+				<h2>กำหนดการ</h2>
 				<div class="program-wrapper">
+					<h3>4 มีนาคม 2566</h3>
 					<ul>
-						<li>13:45 – Gyülekezés a Templomnál</li>
-						<li>14:00 – Ceremónia</li>
-						<li>14:30 – Indulás autós konvojjal a Viktória fogadóba</li>
-						<li>14:45 – Gratulációk fogadása a sátorban</li>
-						<li>15:30 – Fotózás</li>
-						<li>16:30 – Vacsora</li>
-						<li>18:00 – Torta</li>
-						<li>21:00 – Buli vége</li>
+						<li>09.00 - แห่ขันหมาก</li>
+						<li>10.00 - ทำพิธีหมั้น </li>
+						<li>10.30 - รสน้ำสังฆ์ </li>
+						<li>14:30 - งานเลี้ยง</li>
+					</ul>
+					<h3>25 มีนาคม 2566</h3>
+					<ul>
+						<li>08.00 - งานเลี้ยง (โต๊ะไทยสำเร็จ)</li>
 					</ul>
 				</div>
-			</section>
-			<section class="konvoj">
-				<h2>แผนที่นำทาง</h2>
 			</section>
 			<section class="faq">
 				<h2>คำถาม & คำตอบ</h2>
@@ -148,8 +146,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 		</footer>
 		<script>
 			// Arrow script
-			let arrow = document.querySelector('.arrow');
-			let el = document.querySelector('#main');
+			const arrow: Element | null = document.querySelector('.arrow');
+			const el = document.querySelector('#main');
 
 			arrow.addEventListener('click', function () {
 				el.scrollIntoView({ behavior: 'smooth' });
@@ -159,17 +157,6 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 			const lightbox = document.createElement('div');
 			lightbox.id = 'lightbox';
 			document.body.appendChild(lightbox);
-
-			// const img = document.querySelector('#konvoj');
-			// img.addEventListener('click', () => {
-			// 	lightbox.classList.add('active');
-			// 	const newImg = document.createElement('img');
-			// 	newImg.src = img.src;
-			// 	while (lightbox.firstChild) {
-			// 		lightbox.removeChild(lightbox.firstChild);
-			// 	}
-			// 	lightbox.appendChild(newImg);
-			// });
 
 			// Close lightbox only when clicked outside of img
 			lightbox.addEventListener('click', (e) => {

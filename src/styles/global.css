@@ -502,12 +502,12 @@ ARROW DOWN
 
 =============================*/
 
-.faq {
+/* .faq {
   background: var(--dark-text);
   color: var(--heading-text);
   width: 100%;
   text-align: center;
-}
+} */
 
 .faq h2 {
   margin-top: 1rem;
