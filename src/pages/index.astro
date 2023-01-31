@@ -2,7 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 
-import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
+import { SITE_TITLE, SITE_DESCRIPTION, widding } from '../config';
 ---
 
 <!DOCTYPE html>
@@ -23,9 +23,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 		<header class="cover">
 			<div class="hero-text">
 				<mux-video playback-id="EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs" />
-				<div class="tagline">มาร่วมแสดงความยินดีกับเรา!</div>
+				<div class="tagline">{widding.title}</div>
 				<h1>{SITE_TITLE}</h1>
-				<div class="date">4 มีนาคม พ.ศ. 2566</div>
+				<div class="date">{widding.time}</div>
 			</div>
 			<div class="arrow"></div>
 		</header>
