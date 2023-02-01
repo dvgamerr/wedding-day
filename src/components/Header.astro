@@ -1,20 +1,26 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { SITE_TITLE } from '../config';
+import { SITE_TITLE, widding } from '../config';
 ---
 
-<header>
-	<h2>
-		{SITE_TITLE}
-	</h2>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink>
-	</nav>
+<header class="cover">
+	<div class="hero-text">
+		<mux-video playback-id="EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs" />
+		<div class="tagline">{widding.title}</div>
+		<h1>{SITE_TITLE}</h1>
+		<div class="date">{widding.time}</div>
+	</div>
+	<div class="arrow"></div>
 </header>
+<script>
+	// Arrow script
+	const arrow = document.querySelector('.arrow')
+	const el = document.querySelector('#main')
+
+	arrow?.addEventListener('click', function () {
+		el?.scrollIntoView({ behavior: 'smooth' })
+	})
+</script>
+
 <style>
 	header {
 		margin: 0em 0 2em;

@@ -1,8 +1,10 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 
-import { SITE_TITLE, SITE_DESCRIPTION, widding } from '../config';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config';
 ---
 
 <!DOCTYPE html>
@@ -10,25 +12,9 @@ import { SITE_TITLE, SITE_DESCRIPTION, widding } from '../config';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&family=Pattaya&display=swap" />
-		
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-    integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw=="
-    crossorigin="anonymous" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-    crossorigin="anonymous" />
-		<script src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 	</head>
 	<body>
-		<header class="cover">
-			<div class="hero-text">
-				<mux-video playback-id="EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs" />
-				<div class="tagline">{widding.title}</div>
-				<h1>{SITE_TITLE}</h1>
-				<div class="date">{widding.time}</div>
-			</div>
-			<div class="arrow"></div>
-		</header>
+		<Header />
 		<main id="main">
 			<section class="locations-section">
 				<h2>สถานที่ & แผนที่นำทาง</h2>
@@ -122,45 +108,17 @@ import { SITE_TITLE, SITE_DESCRIPTION, widding } from '../config';
 				</div>
 			</section>
 		</main>
-		<footer>
-			<div class="smallText">
-				<p>
-					<small>
-						<a href="https://mr.touno.io" rel="noopener noreferrer" target="_blank">
-							Kananek T.</a> Bangkok, 2023
-					</small>
-				</p>
-			</div>
-			<div class="social">
-				<a href="https://github.com/dvgamerr" target="_blank" rel="noopener">
-					<i class="fab fa-github fa-lg"></i>
-				</a>
-				<a href="https://www.linkedin.com/in/kananek-thongkam" target="_blank" rel="noopener">
-					<i class="fab fa-linkedin fa-lg"></i>
-				</a>
-				<a href="https://www.instagram.com/dvgamerr" target="_blank" rel="noopener">
-					<i class="fab fa-instagram fa-lg"></i>
-				</a>
-			</div>
-		</footer>
+		<Footer />
 		<script>
-			// Arrow script
-			const arrow: Element | null = document.querySelector('.arrow');
-			const el = document.querySelector('#main');
-
-			arrow.addEventListener('click', function () {
-				el.scrollIntoView({ behavior: 'smooth' });
-			});
-
 			// Lightbox script
-			const lightbox = document.createElement('div');
-			lightbox.id = 'lightbox';
-			document.body.appendChild(lightbox);
+			const lightbox = document.createElement('div')
+			lightbox.id = 'lightbox'
+			document.body.appendChild(lightbox)
 
 			// Close lightbox only when clicked outside of img
 			lightbox.addEventListener('click', (e) => {
-				if (e.target !== e.currentTarget) return;
-				lightbox.classList.remove('active');
+				if (e.target !== e.currentTarget) return
+				lightbox.classList.remove('active')
 			});
 		</script>
 	</body>

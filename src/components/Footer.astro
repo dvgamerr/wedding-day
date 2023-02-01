@@ -3,8 +3,31 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} YOUR NAME HERE. All rights reserved.
+	<div class="smallText">
+		<p>
+			<small>
+				&copy; {today.getFullYear()} 
+				<a href="https://mr.touno.io" rel="noopener noreferrer" target="_blank">Kananek T.</a> Bangkok, All rights reserved. (<span id="visits"></span> views)
+			</small>
+		</p>
+	</div>
+	<div class="social">
+		<a href="https://github.com/dvgamerr" target="_blank" rel="noopener">
+			<i class="fab fa-github fa-lg"></i>
+		</a>
+		<a href="https://www.linkedin.com/in/kananek-thongkam" target="_blank" rel="noopener">
+			<i class="fab fa-linkedin fa-lg"></i>
+		</a>
+		<a href="https://www.instagram.com/dvgamerr" target="_blank" rel="noopener">
+			<i class="fab fa-instagram fa-lg"></i>
+		</a>
+	</div>
 </footer>
+<script >
+const visits = await fetch('https://api.countapi.xyz/hit/wedding.touno.io/visits')
+const res = await visits.json()
+document.getElementById('visits').innerHTML = res.value;
+</script>
 <style>
 	footer {
 		padding: 25px;
