@@ -1,13 +1,13 @@
 ---
-import { SITE_TITLE, widding } from '../config';
+import { SITE_TITLE, wedding } from '../config';
 ---
 
 <header class="cover">
 	<div class="hero-text">
 		<mux-video playback-id="EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs" />
-		<div class="tagline">{widding.title}</div>
+		<div class="tagline">{wedding.title}</div>
 		<h1>{SITE_TITLE}</h1>
-		<div class="date">{widding.time}</div>
+		<div class="date">{wedding.time1.format('D MMMM พ.ศ. YYYY')}</div>
 	</div>
 	<div class="arrow"></div>
 </header>
