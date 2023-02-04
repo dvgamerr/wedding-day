@@ -24,7 +24,8 @@ const today = new Date();
 	</div>
 </footer>
 <script >
-const visits = await fetch('https://api.countapi.xyz/hit/wedding.touno.io/visits')
+const localhost = import.meta.env.PUBLIC_ENV === 'local'
+const visits = await fetch(`https://api.countapi.xyz/hit/wedding.touno.io/${localhost ? 'local' : 'visits'}`)
 const res = await visits.json()
 document.getElementById('visits').innerHTML = res.value
 </script>
