@@ -124,7 +124,7 @@ a:hover {
   color: var(--light-text);
   background: rgba(49, 48, 74, 0.25);
   cursor: default;
-  margin-bottom: 10em;
+  margin-bottom: 4em;
 }
 
 .hero-text h1 {
