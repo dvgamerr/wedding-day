@@ -6,8 +6,8 @@ import 'dayjs/locale/th'
 export const SITE_TITLE = 'กิ่งกาญจน์ & กัณฑ์อเนก';
 export const wedding = {
   title: 'มาร่วมแสดงความยินดีกับเรา!',
-  time1: dayjs('2023-03-05T00:00:00.000+0700').locale('th').add(543, 'year'),
-  time2: dayjs('2023-03-26T00:00:00.000+0700').locale('th').add(543, 'year'),
+  time1: dayjs('2023-03-04T08:00:00.000+0700').locale('th').add(543, 'year'),
+  time2: dayjs('2023-03-25T08:00:00.000+0700').locale('th').add(543, 'year'),
 };
 
 export const SITE_DESCRIPTION = `${wedding.title} ใน${wedding.time1.format('วันที่ DD MMMM พ.ศ. YYYY')}`;

@@ -124,7 +124,7 @@ a:hover {
   color: var(--light-text);
   background: rgba(49, 48, 74, 0.25);
   cursor: default;
-  margin-bottom: 4em;
+  margin-bottom: 6em;
 }
 
 .hero-text h1 {
@@ -382,7 +382,10 @@ ARROW DOWN
   font-family: 'Noto Sans Thai', sans-serif;
 }
 
-.location-text:hover {
+.location-text small {
+  font-size: .8rem;
+}
+.location-hover:hover {
   transform: translateY(-0.5rem) scale(1.03);
 }
 

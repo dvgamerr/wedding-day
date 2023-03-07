@@ -19,23 +19,25 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 			<section class="locations-section">
 				<h2>สถานที่ & แผนที่นำทาง</h2>
 				<div class="location-container">
-					<div class="location">
-						<a href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" target="_blank">
-							<div class="location-text">
+					<div class="location" style="filter: grayscale(100%);">
+						<div a-href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" a-target="_blank">
+							<div class="location-text" style="color: #b9b9b9;">
 								<h3>งานพิธี</h3>
 								<img src="images/cultures.svg" alt="Ceremony" />
 								<div>{wedding.time1.format('D MMMM YYYY')}</div>
 								<div>148 หมู่ 4 ต.วังคีรี อ.ห้วยยอด จ.ตรัง</div>
+								<small>(กดเพื่อดูแผนที่)</small>
 							</div>
-						</a>
+						</div>
 					</div>
 					<div class="location">
 						<a href="https://goo.gl/maps/eYxUpWDrWnShij15A" target="_blank">
-							<div class="location-text">
+							<div class="location-text location-hover">
 								<h3>งานเลี้ยง</h3>
 								<img src="images/champagne.svg" alt="Party" />
 								<div>{wedding.time2.format('D MMMM YYYY')}</div>
 								<div>5 หมู่ 5 ต.ปากตะโก อ.ทุ่งตะโก จ.ชุมพร</div>
+								<small>(กดเพื่อดูแผนที่)</small>
 							</div>
 						</a>
 					</div>
@@ -44,8 +46,8 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 			<section class="program">
 				<h2>กำหนดการ</h2>
 				<div class="program-wrapper">
-					<h3>{wedding.time1.format('D MMMM YYYY')}</h3>
-					<ul>
+					<h3 style="color: #717171;">{wedding.time1.format('D MMMM YYYY')}</h3>
+					<ul style="color: #717171;">
 						<li>09.00 - พิธีแห่ขันหมาก</li>
 						<li>10.00 - พิธีหมั้น</li>
 						<li>10.30 - พิธีรดน้ำสังข์</li>
@@ -88,15 +90,15 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 				<h2>ติดต่อ</h2>
 				<p>หากคุณมีคำถามใด ๆ โปรดติดต่อเรา</p>
 				<!-- Add to Calendar Button code -->
-				<div title="Add to Calendar" class="addeventatc">
+				<!-- <div title="Add to Calendar" class="addeventatc">
 					<span class="calendar-text">เพิ่มนัดงานพิธีในปฏิทิน</span>
 					<span class="start">04-03-2023 09:09</span>
 					<span class="end">04-03-2023 18:00</span>
 					<span class="timezone">Asia/Bangkok</span>
 					<span class="title">งานแต่งงาน - {SITE_TITLE}</span>
 					<span class="description">งานแต่งงานของ {SITE_TITLE}</span>
-					<span class="location">Inárcsi Szűz Mária neve templom</span>
-				</div>
+					<span class="location">148 หมู่ 4 ต.วังคีรี อ.ห้วยยอด จ.ตรัง</span>
+				</div> -->
 				<div title="Add to Calendar" class="addeventatc">
 					<span class="calendar-text">เพิ่มนัดงานเลี้ยงในปฏิทิน</span>
 					<span class="start">25-03-2023 08:00</span>
@@ -104,7 +106,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 					<span class="timezone">Asia/Bangkok</span>
 					<span class="title">งานแต่งงาน - {SITE_TITLE}</span>
 					<span class="description">งานแต่งงานของ {SITE_TITLE}</span>
-					<span class="location">Inárcsi Szűz Mária neve templom</span>
+					<span class="location">5 หมู่ 5 ต.ปากตะโก อ.ทุ่งตะโก จ.ชุมพร</span>
 				</div>
 			</section>
 		</main>
