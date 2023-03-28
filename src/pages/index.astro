@@ -19,25 +19,23 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 			<section class="locations-section">
 				<h2>สถานที่ & แผนที่นำทาง</h2>
 				<div class="location-container">
-					<div class="location" style="filter: grayscale(100%);">
+					<div class="location">
 						<div a-href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" a-target="_blank">
 							<div class="location-text" style="color: #b9b9b9;">
 								<h3>งานพิธี</h3>
 								<img src="images/cultures.svg" alt="Ceremony" />
 								<div>{wedding.time1.format('D MMMM YYYY')}</div>
 								<div>148 หมู่ 4 ต.วังคีรี อ.ห้วยยอด จ.ตรัง</div>
-								<small>(กดเพื่อดูแผนที่)</small>
 							</div>
 						</div>
 					</div>
-					<div class="location" style="filter: grayscale(100%);">
+					<div class="location">
 						<div a-href="https://goo.gl/maps/eYxUpWDrWnShij15A" a-target="_blank">
 							<div class="location-text" style="color: #b9b9b9;">
 								<h3>งานเลี้ยง</h3>
 								<img src="images/champagne.svg" alt="Party" />
 								<div>{wedding.time2.format('D MMMM YYYY')}</div>
 								<div>5 หมู่ 5 ต.ปากตะโก อ.ทุ่งตะโก จ.ชุมพร</div>
-								<small>(กดเพื่อดูแผนที่)</small>
 							</div>
 						</div>
 					</div>
@@ -46,15 +44,15 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 			<section class="program">
 				<h2>กำหนดการ</h2>
 				<div class="program-wrapper">
-					<h3 style="color: #717171;">{wedding.time1.format('D MMMM YYYY')}</h3>
-					<ul style="color: #717171;">
+					<h3>{wedding.time1.format('D MMMM YYYY')}</h3>
+					<ul>
 						<li>09.00 - พิธีแห่ขันหมาก</li>
 						<li>10.00 - พิธีหมั้น</li>
 						<li>10.30 - พิธีรดน้ำสังข์</li>
 						<li>14:30 - งานเลี้ยงฉลองมงคลสมรส</li>
 					</ul>
-					<h3 style="color: #717171;">{wedding.time2.format('D MMMM YYYY')}</h3>
-					<ul style="color: #717171;">
+					<h3>{wedding.time2.format('D MMMM YYYY')}</h3>
+					<ul>
 						<li>08.00 - งานเลี้ยงมงคลสมรส (โต๊ะไทยสำเร็จ)</li>
 					</ul>
 				</div>
