@@ -1,13 +1,13 @@
 # Wedding Day Kingkan & Kananek
 
-![placeholder](./public/images/pre-wedding-social.jpg)
+![placeholder](./public/kk_00185-social.png)
 
 
 ## Developer
 
 | Command                | Action                                           |
 | :--------------------- | :----------------------------------------------- |
-| `yarn`                 | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:3000`      |
+| `pnpm`                 | Installs dependencies                            |
+| `pnpm dev`             | Starts local dev server at `localhost:3000`      |
 
 
