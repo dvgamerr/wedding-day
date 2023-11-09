@@ -55,7 +55,7 @@ body {
 .program,
 .konvoj,
 .faq,
-.contact {
+.gallery {
   width: 95%;
   margin: 1.5rem auto;
   padding: 0.5rem 1rem;
@@ -98,7 +98,7 @@ a:hover {
       rgba(83, 81, 124, 0.1),
       rgb(83, 81, 124, 0.1)
     ),
-    url('/images/pre-wedding-mobile.jpg') no-repeat 48% center/cover;
+    url('/kk_00232-mobile.webp') no-repeat 48% center/cover;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -115,7 +115,7 @@ a:hover {
         rgba(83, 81, 124, 0.1),
         rgb(83, 81, 124, 0.1)
       ),
-      url('/images/pre-wedding-wide.jpg') no-repeat center/cover;
+      url('/kk_00232-web.webp') no-repeat center/cover;
   }
 }
 
@@ -566,26 +566,20 @@ ARROW DOWN
 
 /* =============================
 
-        CONTACTS STYLES
+        gallery STYLES
 
 =============================*/
 
-.addeventatc {
-  background-color: whitesmoke;
+.gallery {
+  width: 100%;
+  margin-top: 0;
+  background: var(--dark-text);
+  color: var(--heading-text);
+  font-family: 'Noto Sans Thai', sans-serif;
 }
 
-.addeventatc:hover {
-  background-color: var(--link-color);
-}
-
-.calendar-text {
-  color: var(--dark-text);
-}
-
-@media (min-width: 768px) {
-  .contact {
-    width: 500px;
-  }
+.gallery p {
+  margin: 6em 0;
 }
 
 /* =============================

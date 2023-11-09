@@ -4,9 +4,12 @@ import { SITE_TITLE, wedding } from '../config';
 
 <header class="cover">
 	<div class="hero-text">
-		<mux-video playback-id="EcHgOK9coz5K4rjSwOkoE7Y7O01201YMIC200RI6lNxnhs" />
 		<div class="tagline">{wedding.title}</div>
-		<h1>{SITE_TITLE}</h1>
+		<h1 class="title">
+			<span>กิ่งกาญจน์</span>
+			<img src="cbimage.png" width="92" height="92" />
+			<span>กัณฑ์อเนก</span>
+		</h1>
 		<div class="date">{wedding.time2.format('D MMMM พ.ศ. YYYY')}</div>
 	</div>
 	<div class="arrow"></div>
@@ -22,9 +25,14 @@ import { SITE_TITLE, wedding } from '../config';
 </script>
 
 <style>
-	header {
-		margin: 0em 0 2em;
+	.cover .title {
+		column-gap: 0.25em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 	}
+
+
 	h2 {
 		margin: 0.5em 0;
 	}
