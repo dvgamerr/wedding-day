@@ -5,6 +5,6 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://wedding.touno.io',
+	site: 'https://wedding.dvgamerr.app',
 	integrations: [mdx(), sitemap()],
 });

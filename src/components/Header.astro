@@ -31,7 +31,16 @@ import { SITE_TITLE, wedding } from '../config';
     align-items: center;
     justify-content: center;
 	}
-
+	@media screen and (max-width: 1024px) {
+		.cover .title  {
+			flex-direction: column;
+			transform: scale(0.8);
+			line-height: 1.2em;
+		}
+		.cover .title > img {
+			margin: 0px;
+		}
+	}
 
 	h2 {
 		margin: 0.5em 0;
