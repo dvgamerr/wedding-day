@@ -15,10 +15,10 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 		<!-- Cronitor RUM -->
 		<script async src="https://rum.cronitor.io/script.js"></script>
 		<script>
-      // @ts-ignore: any
-				window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
-      // @ts-ignore: any
-				cronitor('config', { clientKey: '04303faac1a2afad07841827c06697f6' });
+			// @ts-expect-error: Cronitor global type not defined
+			window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
+			// @ts-expect-error: Cronitor global function
+			window.cronitor('config', { clientKey: '04303faac1a2afad07841827c06697f6' });
 		</script>
 	</head>
 	<body>
@@ -32,7 +32,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 				<h2>สถานที่ & แผนที่นำทาง</h2>
 				<div class="location-container">
 					<div class="location">
-						<div a-href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" a-target="_blank">
+						<a href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" target="_blank">
 							<div class="location-text  location-hover">
 								<h3>งานพิธี</h3>
 								<img src="images/cultures.svg" alt="Ceremony" />
@@ -40,10 +40,10 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 								<div>148 หมู่ 4 ต.วังคีรี อ.ห้วยยอด จ.ตรัง</div>
 								<small style="display:none;">(กดเพื่อดูแผนที่)</small>
 							</div>
-						</div>
+						</a>
 					</div>
 					<div class="location">
-						<a a-href="https://goo.gl/maps/eYxUpWDrWnShij15A" a-target="_blank">
+						<a href="https://goo.gl/maps/eYxUpWDrWnShij15A" target="_blank">
 							<div class="location-text location-hover">
 								<h3>งานเลี้ยง</h3>
 								<img src="images/champagne.svg" alt="Party" />
@@ -51,7 +51,7 @@ import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
 								<div>5 หมู่ 5 ต.ปากตะโก อ.ทุ่งตะโก จ.ชุมพร</div>
 								<small style="display:none;">(กดเพื่อดูแผนที่)</small>
 							</div>
-						</div>
+						</a>
 					</div>
 				</div>
 			</section>
