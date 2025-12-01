@@ -7,7 +7,7 @@
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.2",
     "@cronitorio/cronitor-rum": "^0.4.1",
-    "@mux/mux-video": "^0.27.2",
+    "@mux/mux-video": "^0.28.1",
     "astro": "^5.12.8",
     "astro-google-fonts-optimizer": "^0.2.2",
     "dayjs": "^1.11.13"
