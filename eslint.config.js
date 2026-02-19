@@ -5,33 +5,36 @@ import astro from 'eslint-plugin-astro';
 import globals from 'globals';
 
 export default [
-  js.configs.recommended,
-  ...astro.configs.recommended,
-  {
-    files: ['**/*.{js,mjs,cjs,ts,tsx}'],
-    languageOptions: {
-      parser: typescriptParser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-        ...globals.es2021
-      }
-    },
-    plugins: {
-      '@typescript-eslint': typescript
-    },
-    rules: {
-      ...typescript.configs.recommended.rules
-    }
-  },
-  {
-    files: ['**/*.astro'],
-    languageOptions: {
-      globals: {
-        ...globals.browser
-      }
-    }
-  }
+	{
+		ignores: ['dist/**', '.astro/**', 'node_modules/**'],
+	},
+	js.configs.recommended,
+	...astro.configs.recommended,
+	{
+		files: ['**/*.{js,mjs,cjs,ts,tsx}'],
+		languageOptions: {
+			parser: typescriptParser,
+			ecmaVersion: 'latest',
+			sourceType: 'module',
+			globals: {
+				...globals.browser,
+				...globals.node,
+				...globals.es2021,
+			},
+		},
+		plugins: {
+			'@typescript-eslint': typescript,
+		},
+		rules: {
+			...typescript.configs.recommended.rules,
+		},
+	},
+	{
+		files: ['**/*.astro'],
+		languageOptions: {
+			globals: {
+				...globals.browser,
+			},
+		},
+	},
 ];
