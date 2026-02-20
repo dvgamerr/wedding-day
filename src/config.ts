@@ -11,3 +11,10 @@ export const wedding = {
 }
 
 export const SITE_DESCRIPTION = `${wedding.title} ใน${wedding.time1.format('วันที่ DD MMMM พ.ศ. YYYY')}`
+
+export const themes = [
+  { id: 'dark-elegant', number: '01', title: 'Dark Elegant' },
+  { id: 'romantic', number: '02', title: 'Romantic' },
+  { id: 'natural', number: '03', title: 'Natural' },
+  { id: 'classic', number: '04', title: 'Classic' },
+]
