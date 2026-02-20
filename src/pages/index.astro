@@ -107,7 +107,9 @@ const themeLinks = themes.map(({ id, number, title }) => ({ id, number, title })
       <Hero themes={themeLinks} />
       <VenueSection />
       <ScheduleSection />
-      {themes.map((theme) => <ThemeSection theme={theme} />)}
+      <div id="gallery">
+        {themes.map((theme) => <ThemeSection theme={theme} />)}
+      </div>
       <FAQFooter />
     </div>
   </body>

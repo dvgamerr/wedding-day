@@ -68,13 +68,12 @@ const navLinks = [
   const navThemes = document.getElementById('nav-themes')
 
   // The first theme section id that triggers the switch
-  const firstThemeSection = document.getElementById('dark-elegant')
+  const sectionGallery = document.getElementById('gallery')
 
-  if (firstThemeSection && navDefault && navThemes) {
+  if (sectionGallery && navDefault && navThemes) {
     const observer = new IntersectionObserver(
       (entries) => {
-        const inGallery = entries[0].isIntersecting
-        if (inGallery) {
+        if (entries[0].isIntersecting) {
           navDefault.classList.add('opacity-0', 'pointer-events-none', 'absolute')
           navThemes.classList.remove('opacity-0', 'pointer-events-none', 'absolute')
         } else {
@@ -82,8 +81,8 @@ const navLinks = [
           navThemes.classList.add('opacity-0', 'pointer-events-none', 'absolute')
         }
       },
-      { threshold: 0, rootMargin: '-64px 0px 0px 0px' }
+      { threshold: 0, rootMargin: '-100px 0px 0px 0px' }
     )
-    observer.observe(firstThemeSection)
+    observer.observe(sectionGallery)
   }
 </script>
