@@ -1,104 +1,96 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
+import BaseHead from '../components/BaseHead.astro'
+import Header from '../components/Header.astro'
+import Footer from '../components/Footer.astro'
+import { GoogleFontsOptimizer } from 'astro-google-fonts-optimizer'
 
-import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config';
+import { SITE_TITLE, SITE_DESCRIPTION, wedding } from '../config'
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&family=Pattaya&display=swap" />
-		<!-- Cronitor RUM -->
-		<script async src="https://rum.cronitor.io/script.js"></script>
-		<script>
-			// @ts-expect-error: Cronitor global type not defined
-			window.cronitor = window.cronitor || function() { (window.cronitor.q = window.cronitor.q || []).push(arguments); };
-			// @ts-expect-error: Cronitor global function
-			window.cronitor('config', { clientKey: '04303faac1a2afad07841827c06697f6' });
-		</script>
-	</head>
-	<body>
-		<Header />
-		<main id="main">
-			<section class="gallery">
-				<h2>Gallery</h2>
-				<p>พบกับในแกลลอรี่ของพวกเราเร็วๆ นี้</p>
-			</section>
-			<section class="locations-section">
-				<h2>สถานที่ & แผนที่นำทาง</h2>
-				<div class="location-container">
-					<div class="location">
-						<a href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" target="_blank">
-							<div class="location-text  location-hover">
-								<h3>งานพิธี</h3>
-								<img src="images/cultures.svg" alt="Ceremony" />
-								<div>{wedding.time1.format('D MMMM YYYY')}</div>
-								<div>148 หมู่ 4 ต.วังคีรี อ.ห้วยยอด จ.ตรัง</div>
-								<small style="display:none;">(กดเพื่อดูแผนที่)</small>
-							</div>
-						</a>
-					</div>
-					<div class="location">
-						<a href="https://goo.gl/maps/eYxUpWDrWnShij15A" target="_blank">
-							<div class="location-text location-hover">
-								<h3>งานเลี้ยง</h3>
-								<img src="images/champagne.svg" alt="Party" />
-								<div>{wedding.time2.format('D MMMM YYYY')}</div>
-								<div>5 หมู่ 5 ต.ปากตะโก อ.ทุ่งตะโก จ.ชุมพร</div>
-								<small style="display:none;">(กดเพื่อดูแผนที่)</small>
-							</div>
-						</a>
-					</div>
-				</div>
-			</section>
-			<section class="program">
-				<h2>กำหนดการ</h2>
-				<div class="program-wrapper">
-					<h3>{wedding.time1.format('D MMMM YYYY')}</h3>
-					<ul>
-						<li>09.00 - พิธีแห่ขันหมาก</li>
-						<li>10.00 - พิธีหมั้น</li>
-						<li>10.30 - พิธีรดน้ำสังข์</li>
-						<li>14:30 - งานเลี้ยงฉลองมงคลสมรส</li>
-					</ul>
-					<h3>{wedding.time2.format('D MMMM YYYY')}</h3>
-					<ul>
-						<li>08.00 - งานเลี้ยงมงคลสมรส (โต๊ะไทยสำเร็จ)</li>
-					</ul>
-				</div>
-			</section>
-			<section class="faq">
-				<h2>คำถาม & คำตอบ</h2>
-				<div class="question-group-container">
-					<div class="question-group">
-						<h3>การเดินทางและที่พัก</h3>
-						<p class="question">ฉันจะไปที่นั่นได้อย่างไร?</p>
-						<p class="answer">คุณสามารถเดินทางรถยนต์</p>
-						<p class="question">ฉันสามารถจอดรถได้ที่ไหน?</p>
-						<p class="answer">มีที่จอดรถได้แน่นอน</p>
-						<p class="question">ฉันสามารถจองที่พักสำหรับคืนนึงได้หรือไม่?</p>
-						<p class="answer">ขออภัยที่เราไม่มีที่พักให้ แต่ถ้าหากคุณไม่สามารถหาที่พักเองได้ โปรดแจ้งเรา เราจะหาที่พักให้คุณเอง</p>
-					</div>
-					<div class="question-group">
-						<h3>การเฉลิมฉลองและอาหาร</h3>
-						<p class="question">ฉันสามารถนำของขวัญสำหรับคู่บ่าวสาวได้หรือไม่?
-						</p>
-						<p class="answer">เรายินดีสนับสนุนทุกรูปแบบ!</p>
-						<p class="question">จะใส่ชุดอะไรดี มีระเบียบการแต่งตัวไหม?</p>
-						<p class="answer">แต่งกายเรียบร้อยแต่สบายตัว</p>
-					</div>
-					<div class="question-group">
-						<h3>สิ่งเล็กน้อยอื่น ๆ</h3>
-						<p class="question">ถ่ายรูปลงเฟสบุ๊คได้ไหม?</p>
-						<p class="answer">แน่นอน และรบกวนใส่ hashtag <code>#KK3rdStory</code></p>
-					</div>
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <GoogleFontsOptimizer
+      url="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&family=Pattaya&display=swap"
+    />
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <section class="locations-section">
+        <h2>สถานที่ & แผนที่นำทาง</h2>
+        <div class="location-container">
+          <div class="location">
+            <a href="https://goo.gl/maps/2wrJwHqcx2UDrYVb6" target="_blank">
+              <div class="location-text location-hover">
+                <h3>งานพิธี</h3>
+                <img src="images/cultures.svg" alt="Ceremony" />
+                <div>{wedding.time1.format('D MMMM YYYY')}</div>
+                <div>148 หมู่ 4 ต.วังคีรี อ.ห้วยยอด จ.ตรัง</div>
+                <small style="display:none;">(กดเพื่อดูแผนที่)</small>
+              </div>
+            </a>
+          </div>
+          <div class="location">
+            <a href="https://goo.gl/maps/eYxUpWDrWnShij15A" target="_blank">
+              <div class="location-text location-hover">
+                <h3>งานเลี้ยง</h3>
+                <img src="images/champagne.svg" alt="Party" />
+                <div>{wedding.time2.format('D MMMM YYYY')}</div>
+                <div>5 หมู่ 5 ต.ปากตะโก อ.ทุ่งตะโก จ.ชุมพร</div>
+                <small style="display:none;">(กดเพื่อดูแผนที่)</small>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section class="program">
+        <h2>กำหนดการ</h2>
+        <div class="program-wrapper">
+          <h3>{wedding.time1.format('D MMMM YYYY')}</h3>
+          <ul>
+            <li>09.00 - พิธีแห่ขันหมาก</li>
+            <li>10.00 - พิธีหมั้น</li>
+            <li>10.30 - พิธีรดน้ำสังข์</li>
+            <li>14:30 - งานเลี้ยงฉลองมงคลสมรส</li>
+          </ul>
+          <h3>{wedding.time2.format('D MMMM YYYY')}</h3>
+          <ul>
+            <li>08.00 - งานเลี้ยงมงคลสมรส (โต๊ะไทยสำเร็จ)</li>
+          </ul>
+        </div>
+      </section>
+      <section class="faq">
+        <h2>คำถาม & คำตอบ</h2>
+        <div class="question-group-container">
+          <div class="question-group">
+            <h3>การเดินทางและที่พัก</h3>
+            <p class="question">ฉันจะไปที่นั่นได้อย่างไร?</p>
+            <p class="answer">คุณสามารถเดินทางรถยนต์</p>
+            <p class="question">ฉันสามารถจอดรถได้ที่ไหน?</p>
+            <p class="answer">มีที่จอดรถได้แน่นอน</p>
+            <p class="question">ฉันสามารถจองที่พักสำหรับคืนนึงได้หรือไม่?</p>
+            <p class="answer">
+              ขออภัยที่เราไม่มีที่พักให้ แต่ถ้าหากคุณไม่สามารถหาที่พักเองได้ โปรดแจ้งเรา
+              เราจะหาที่พักให้คุณเอง
+            </p>
+          </div>
+          <div class="question-group">
+            <h3>การเฉลิมฉลองและอาหาร</h3>
+            <p class="question">ฉันสามารถนำของขวัญสำหรับคู่บ่าวสาวได้หรือไม่?</p>
+            <p class="answer">เรายินดีสนับสนุนทุกรูปแบบ!</p>
+            <p class="question">จะใส่ชุดอะไรดี มีระเบียบการแต่งตัวไหม?</p>
+            <p class="answer">แต่งกายเรียบร้อยแต่สบายตัว</p>
+          </div>
+          <div class="question-group">
+            <h3>สิ่งเล็กน้อยอื่น ๆ</h3>
+            <p class="question">ถ่ายรูปลงเฟสบุ๊คได้ไหม?</p>
+            <p class="answer">แน่นอน และรบกวนใส่ hashtag <code>#KK3rdStory</code></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>

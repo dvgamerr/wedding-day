@@ -1,49 +1,50 @@
 {
-	"name": "wedding-dvgamerr",
-	"version": "1.2.0",
-	"type": "module",
-	"dependencies": {
-		"@astrojs/mdx": "^4.3.13",
-		"@astrojs/rss": "^4.0.15",
-		"@astrojs/sitemap": "^3.7.0",
-		"@cronitorio/cronitor-rum": "^0.4.1",
-		"@mux/mux-video": "^0.24.5",
-		"astro": "^5.17.3",
-		"astro-google-fonts-optimizer": "^0.2.2",
-		"dayjs": "^1.11.19"
-	},
-	"private": true,
-	"scripts": {
-		"dev": "astro dev",
-		"start": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro",
-		"lint": "eslint . --max-warnings=0",
-		"format": "prettier --write .",
-		"format:check": "prettier --check .",
-		"prepare": "husky"
-	},
-	"devDependencies": {
-		"@eslint/js": "^10.0.1",
-		"@typescript-eslint/eslint-plugin": "^8.56.0",
-		"@typescript-eslint/parser": "^8.56.0",
-		"astro-compress": "^2.3.9",
-		"eslint": "^10.0.0",
-		"eslint-plugin-astro": "^1.6.0",
-		"globals": "^17.3.0",
-		"husky": "^9.1.7",
-		"lint-staged": "^16.2.7",
-		"prettier": "^3.8.1",
-		"prettier-plugin-astro": "^0.14.1"
-	},
-	"lint-staged": {
-		"*.{js,mjs,cjs,ts,tsx,astro}": [
-			"eslint --fix",
-			"prettier --write"
-		],
-		"*.{css,md,json,yml,yaml}": [
-			"prettier --write"
-		]
-	}
+  "name": "wedding-dvgamerr",
+  "version": "1.2.0",
+  "type": "module",
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
+    "@cronitorio/cronitor-rum": "^0.4.1",
+    "@mux/mux-video": "^0.24.5",
+    "astro": "^5.17.3",
+    "astro-google-fonts-optimizer": "^0.2.2",
+    "dayjs": "^1.11.19"
+  },
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint . --max-warnings=0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.56.0",
+    "@typescript-eslint/parser": "^8.56.0",
+    "astro-compress": "^2.3.9",
+    "eslint": "^10.0.0",
+    "eslint-plugin-astro": "^1.6.0",
+    "globals": "^17.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,md,json,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
 }
