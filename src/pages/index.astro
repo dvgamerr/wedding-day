@@ -1,0 +1,114 @@
+---
+import { GoogleFontsOptimizer } from 'astro-google-fonts-optimizer'
+
+import GalleryHead from '../components/gallery/GalleryHead.astro'
+import Navbar from '../components/gallery/Navbar.astro'
+import Hero from '../components/gallery/Hero.astro'
+import VenueSection from '../components/gallery/VenueSection.astro'
+import ScheduleSection from '../components/gallery/ScheduleSection.astro'
+import ThemeSection from '../components/gallery/ThemeSection.astro'
+import FAQFooter from '../components/gallery/FAQFooter.astro'
+import type { ThemeSectionProps, GalleryImage } from '../components/gallery/ThemeSection.astro'
+
+import { SITE_TITLE, SITE_DESCRIPTION } from '../config'
+
+// ---- Placeholder helper --------------------------------------------------
+function makePlaceholders(seeds: number[], label: string): GalleryImage[] {
+  const orientations = [
+    '600/750',
+    '750/600',
+    '600/750',
+    '600/750',
+    '750/600',
+    '600/750',
+    '600/750',
+    '750/600',
+    '600/750',
+    '750/600',
+    '600/750',
+    '600/750',
+  ]
+  return seeds.map((seed, i) => ({
+    src: `https://picsum.photos/seed/${label}-${seed}/${orientations[i % orientations.length]}`,
+    alt: `${label} wedding photo ${i + 1}`,
+  }))
+}
+
+const darkSeeds = Array.from({ length: 43 }, (_, i) => 100 + i)
+const whiteSeeds = Array.from({ length: 44 }, (_, i) => 200 + i)
+const earthySeeds = Array.from({ length: 44 }, (_, i) => 300 + i)
+const floralSeeds = Array.from({ length: 44 }, (_, i) => 400 + i)
+
+const themes: ThemeSectionProps[] = [
+  {
+    id: 'dark-elegant',
+    title: 'Dark & Elegant',
+    subtitle: 'Timeless sophistication wrapped in shadow and light',
+    number: '01',
+    bgClass: 'bg-section-dark',
+    headingClass: 'text-section-dark-fg',
+    subtitleClass: 'text-section-dark-fg/60',
+    dividerClass: 'bg-section-dark-fg/20',
+    countClass: 'text-section-dark-fg/40',
+    images: makePlaceholders(darkSeeds, 'dark'),
+  },
+  {
+    id: 'classic-white',
+    title: 'Classic White',
+    subtitle: 'Pure simplicity — where every moment speaks for itself',
+    number: '02',
+    bgClass: 'bg-section-white',
+    headingClass: 'text-section-white-fg',
+    subtitleClass: 'text-section-white-fg/50',
+    dividerClass: 'bg-section-white-fg/15',
+    countClass: 'text-section-white-fg/35',
+    images: makePlaceholders(whiteSeeds, 'white'),
+  },
+  {
+    id: 'natural-earthy',
+    title: 'Natural Earthy',
+    subtitle: 'Warm tones, soft textures, and the beauty of the outdoors',
+    number: '03',
+    bgClass: 'bg-section-earthy',
+    headingClass: 'text-section-earthy-fg',
+    subtitleClass: 'text-section-earthy-fg/55',
+    dividerClass: 'bg-section-earthy-fg/15',
+    countClass: 'text-section-earthy-fg/40',
+    images: makePlaceholders(earthySeeds, 'earthy'),
+  },
+  {
+    id: 'romantic-floral',
+    title: 'Romantic Floral',
+    subtitle: 'Blooms, blush, and the tender sweetness of new beginnings',
+    number: '04',
+    bgClass: 'bg-section-floral',
+    headingClass: 'text-section-floral-fg',
+    subtitleClass: 'text-section-floral-fg/55',
+    dividerClass: 'bg-section-floral-fg/15',
+    countClass: 'text-section-floral-fg/40',
+    images: makePlaceholders(floralSeeds, 'floral'),
+  },
+]
+
+const themeLinks = themes.map(({ id, number, title }) => ({ id, number, title }))
+---
+
+<!doctype html>
+<html lang="th">
+  <head>
+    <GalleryHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <GoogleFontsOptimizer
+      url="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600&family=Pattaya&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap"
+    />
+  </head>
+  <body>
+    <div id="top" class="min-h-screen">
+      <Navbar />
+      <Hero themes={themeLinks} />
+      <VenueSection />
+      <ScheduleSection />
+      {themes.map((theme) => <ThemeSection theme={theme} />)}
+      <FAQFooter />
+    </div>
+  </body>
+</html>

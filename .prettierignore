@@ -3,3 +3,4 @@ dist
 .astro
 coverage
 bun.lock
+public

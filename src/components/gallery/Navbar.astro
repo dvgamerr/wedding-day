@@ -1,0 +1,29 @@
+---
+const navLinks = [
+  { id: 'venue', label: 'สถานที่' },
+  { id: 'dark-elegant', label: 'แกลเลอรี' },
+  { id: 'faq', label: 'Q&A' },
+]
+---
+
+<nav
+  class="bg-background/5 fixed top-0 right-0 left-0 z-50 border-b border-white/10 backdrop-blur-md"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <span class="text-foreground font-serif text-base tracking-wide">Wedding Gallery</span>
+    <ul class="hidden items-center gap-8 sm:flex">
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={`#${link.id}`}
+              class="text-muted-foreground hover:text-foreground text-[11px] tracking-[0.18em] uppercase transition-colors duration-200"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>

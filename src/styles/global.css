@@ -92,27 +92,6 @@ a:hover {
 
 =============================*/
 
-.cover {
-  background:
-    linear-gradient(to right bottom, rgba(83, 81, 124, 0.1), rgb(83, 81, 124, 0.1)),
-    url('/kk_00232-mobile.webp') no-repeat 48% center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  text-align: center;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  .cover {
-    background:
-      linear-gradient(to right bottom, rgba(83, 81, 124, 0.1), rgb(83, 81, 124, 0.1)),
-      url('/kk_00232-web.webp') no-repeat center/cover;
-  }
-}
-
 .hero-text {
   padding: 0.625rem;
   color: var(--light-text);

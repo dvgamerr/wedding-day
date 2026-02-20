@@ -1,0 +1,67 @@
+---
+import Invitation from '@/components/gallery/Invitation.astro'
+
+interface ThemeLink {
+  id: string
+  number: string
+  title: string
+}
+
+interface Props {
+  themes: ThemeLink[]
+}
+
+const { themes } = Astro.props
+---
+
+<section
+  class="bg-background flex min-h-screen flex-col items-center justify-center px-6 pt-20 text-center"
+>
+  <p class="mt-50 mb-8 text-[10px] tracking-[0.35em] text-white uppercase">
+    A collection of moments
+  </p>
+
+  <Invitation />
+  <div class="bg-border mx-auto mb-6 h-px w-12"></div>
+  <p class="max-w-xs text-sm leading-relaxed text-white">
+    Four themes, one story — scroll to discover each chapter of love beautifully captured.
+  </p>
+
+  <!-- Theme quick links -->
+  <div class="mt-12 grid grid-cols-2 gap-3 sm:flex sm:gap-6">
+    {
+      themes.map((t) => (
+        <a
+          href={`#${t.id}`}
+          class="border-border border px-4 py-2.5 text-[10px] tracking-[0.2em] text-white/70 uppercase transition-all duration-200 hover:border-white/30 hover:text-white"
+        >
+          {t.number} {t.title}
+        </a>
+      ))
+    }
+  </div>
+
+  <a
+    href="#dark-elegant"
+    class="group mt-14 flex flex-col items-center gap-2 text-white transition-colors hover:text-white"
+  >
+    <span class="text-[10px] tracking-[0.25em] uppercase">Scroll</span>
+    <span class="block h-10 w-px bg-white/30 transition-colors group-hover:bg-white/50"></span>
+  </a>
+</section>
+
+<style>
+  section.bg-background {
+    background:
+      linear-gradient(to right bottom, rgba(83, 81, 124, 0.1), rgb(83, 81, 124, 0.1)),
+      url('/kk_00232-mobile.webp') no-repeat 48% center/cover;
+  }
+
+  @media (min-width: 768px) {
+    section.bg-background {
+      background:
+        linear-gradient(to right bottom, rgba(83, 81, 124, 0.1), rgb(83, 81, 124, 0.1)),
+        url('/kk_00232-web.webp') no-repeat center/cover;
+    }
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+interface FAQItem {
+  q: string
+  a: string
+}
+
+interface FAQCategory {
+  title: string
+  items: FAQItem[]
+}
+
+const faqData: FAQCategory[] = [
+  {
+    title: 'การเดินทางและที่พัก',
+    items: [
+      {
+        q: 'ฉันจะไปที่นั่นได้อย่างไร?',
+        a: 'คุณสามารถเดินทางรถยนต์',
+      },
+      {
+        q: 'ฉันสามารถจอดรถได้ที่ไหน?',
+        a: 'มีที่จอดรถได้แน่นอน',
+      },
+      {
+        q: 'ฉันสามารถจองที่พักสำหรับคืนนึงได้หรือไม่?',
+        a: 'ขออภัยที่เราไม่มีที่พักให้ แต่ถ้าหากคุณไม่สามารถหาที่พักเองได้ โปรดแจ้งเรา เราจะหาที่พักให้คุณเอง',
+      },
+    ],
+  },
+  {
+    title: 'การเฉลิมฉลองและอาหาร',
+    items: [
+      {
+        q: 'ฉันสามารถนำของขวัญสำหรับคู่บ่าวสาวได้หรือไม่?',
+        a: 'เรายินดีสนับสนุนทุกรูปแบบ!',
+      },
+      {
+        q: 'จะใส่ชุดอะไรดี มีระเบียบการแต่งตัวไหม?',
+        a: 'แต่งกายเรียบร้อยแต่สบายตัว',
+      },
+    ],
+  },
+  {
+    title: 'สิ่งเล็กน้อยอื่น ๆ',
+    items: [
+      {
+        q: 'ถ่ายรูปลงเฟสบุ๊คได้ไหม?',
+        a: 'แน่นอน และรบกวนใส่ hashtag #KK3rdStory',
+      },
+    ],
+  },
+]
+---
+
+<footer id="faq" class="bg-secondary/30 border-border border-t px-6 py-24 md:py-32">
+  <div class="mx-auto max-w-2xl">
+    <div class="mb-14 text-center">
+      <p class="text-muted-foreground mb-4 text-[10px] tracking-[0.35em] uppercase">
+        ข้อมูลเพิ่มเติม
+      </p>
+      <h2 class="text-foreground mb-3 font-serif text-3xl md:text-4xl">คำถาม &amp; คำตอบ</h2>
+      <div class="bg-border mx-auto h-px w-10"></div>
+    </div>
+
+    <div class="space-y-10">
+      {
+        faqData.map((category) => (
+          <div>
+            <h3 class="text-foreground mb-4 font-serif text-lg">{category.title}</h3>
+            <div class="divide-border border-border divide-y border-t">
+              {category.items.map((item) => (
+                <details class="group py-1">
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-3 text-sm">
+                    <span class="text-foreground">{item.q}</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="text-muted-foreground h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="6 9 12 15 18 9" />
+                    </svg>
+                  </summary>
+                  <div class="text-muted-foreground pb-4 text-sm leading-relaxed">{item.a}</div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 text-center">
+      <div class="bg-border mx-auto mb-4 h-px w-8"></div>
+      <p class="text-muted-foreground text-[10px] tracking-[0.25em] uppercase">
+        Wedding Photography Gallery
+      </p>
+    </div>
+  </div>
+</footer>

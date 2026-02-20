@@ -1,0 +1,99 @@
+---
+export interface GalleryImage {
+  src: string
+  alt: string
+}
+
+export interface ThemeSectionProps {
+  id: string
+  title: string
+  subtitle: string
+  number: string
+  bgClass: string
+  headingClass: string
+  subtitleClass: string
+  dividerClass: string
+  countClass: string
+  images: GalleryImage[]
+}
+
+interface Props {
+  theme: ThemeSectionProps
+}
+
+const { theme } = Astro.props
+const isDark = theme.id === 'dark-elegant'
+const photoCount = theme.images.length
+const [feature, ...rest] = theme.images
+const shadowClass = isDark
+  ? 'shadow-[0_4px_20px_rgba(0,0,0,0.5)]'
+  : 'shadow-[0_2px_12px_rgba(0,0,0,0.08)]'
+---
+
+<section id={theme.id} class={`${theme.bgClass} py-20 md:py-28`}>
+  <div class="mx-auto max-w-6xl px-6">
+    <!-- Header -->
+    <div class="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <p class={`text-[10px] tracking-[0.3em] uppercase mb-3 ${theme.subtitleClass}`}>
+          Theme {theme.number}
+        </p>
+        <h2 class={`font-serif text-4xl md:text-5xl font-normal mb-3 ${theme.headingClass}`}>
+          {theme.title}
+        </h2>
+        <div class={`w-10 h-px ${theme.dividerClass} mb-3`}></div>
+        <p class={`text-sm max-w-sm leading-relaxed ${theme.subtitleClass}`}>
+          {theme.subtitle}
+        </p>
+      </div>
+      <p
+        class={`font-serif text-7xl md:text-8xl font-light leading-none select-none ${theme.countClass}`}
+      >
+        {photoCount}
+      </p>
+    </div>
+
+    <!-- Photo Grid -->
+    <div class="space-y-2 md:space-y-3">
+      <!-- Feature image — full width, 16:9 crop -->
+      <div class={`w-full overflow-hidden rounded-sm ${shadowClass}`}>
+        <div class="relative w-full" style="padding-bottom: 56.25%">
+          <img
+            src={feature.src}
+            alt={feature.alt}
+            loading="lazy"
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+          />
+        </div>
+      </div>
+
+      <!-- 3-column uniform grid -->
+      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-3">
+        {
+          rest.map((img) => (
+            <div class={`overflow-hidden rounded-sm ${shadowClass}`}>
+              <div class="relative w-full" style="padding-bottom: 125%">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Back to top -->
+    <div class="mt-16 text-center">
+      <a
+        href="#top"
+        class={`text-[10px] tracking-[0.25em] uppercase ${theme.subtitleClass} hover:opacity-100 transition-opacity`}
+      >
+        ↑ Back to top
+      </a>
+    </div>
+  </div>
+</section>

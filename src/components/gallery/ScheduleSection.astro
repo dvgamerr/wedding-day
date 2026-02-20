@@ -1,0 +1,73 @@
+---
+interface ScheduleItem {
+  time: string
+  label: string
+}
+
+interface DaySchedule {
+  date: string
+  items: ScheduleItem[]
+}
+
+const schedule: DaySchedule[] = [
+  {
+    date: '4 มีนาคม 2566',
+    items: [
+      { time: '09.00', label: 'พิธีแห่ขันหมาก' },
+      { time: '10.00', label: 'พิธีหมั้น' },
+      { time: '10.30', label: 'พิธีรดน้ำสังข์' },
+      { time: '14.30', label: 'งานเลี้ยงฉลองมงคลสมรส' },
+    ],
+  },
+  {
+    date: '25 มีนาคม 2566',
+    items: [
+      { time: '08.00', label: 'งานเลี้ยงมงคลสมรส (โต๊ะไทยสำเร็จ)' },
+      { time: '12.00', label: 'เสร็จพิธี' },
+    ],
+  },
+]
+---
+
+<section id="schedule" class="bg-background px-6 py-24 md:py-32">
+  <div class="mx-auto max-w-2xl">
+    <div class="mb-14 text-center">
+      <p class="text-muted-foreground mb-4 text-[10px] tracking-[0.35em] uppercase">รายละเอียด</p>
+      <h2 class="text-foreground mb-3 font-serif text-3xl md:text-4xl">กำหนดการ</h2>
+      <div class="bg-border mx-auto h-px w-10"></div>
+    </div>
+
+    <div class="space-y-12">
+      {
+        schedule.map((day) => (
+          <div>
+            <h3 class="text-foreground mb-6 text-center font-serif text-xl md:text-2xl">
+              {day.date}
+            </h3>
+            <div class="space-y-4">
+              {day.items.map((item) => (
+                <div class="border-border flex items-center gap-4 border-b pb-4 last:border-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="text-muted-foreground h-4 w-4 shrink-0"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span class="text-foreground w-14 shrink-0 text-sm font-medium">{item.time}</span>
+                  <span class="text-muted-foreground text-sm">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
