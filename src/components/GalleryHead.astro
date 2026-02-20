@@ -1,39 +1,120 @@
 ---
+import { SEO } from 'astro-seo'
 import '@/styles/gallery.css'
+import {
+  SITE_URL,
+  SITE_TITLE,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_IMAGE,
+  SITE_AUTHOR,
+  SITE_LANGUAGE,
+} from '@/config'
 
 export interface Props {
-  title: string
-  description: string
+  title?: string
+  description?: string
   image?: string
+  keywords?: string[]
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const { title, description, image = '/kk_00185-social.png' } = Astro.props
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  image = SITE_IMAGE,
+  keywords = SITE_KEYWORDS,
+} = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || SITE_URL)
+const imageURL = new URL(image, Astro.site || SITE_URL).toString()
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-<meta name="generator" content={Astro.generator} />
 
-<link rel="canonical" href={canonicalURL} />
+<SEO
+  title={title}
+  description={description}
+  canonical={canonicalURL.toString()}
+  charset="utf-8"
+  openGraph={{
+    basic: {
+      title: title,
+      type: 'website',
+      image: imageURL,
+      url: canonicalURL.toString(),
+    },
+    optional: {
+      description: description,
+      siteName: SITE_NAME,
+      locale: 'th_TH',
+    },
+    image: {
+      url: imageURL,
+      secureUrl: imageURL,
+      type: 'image/png',
+      width: 1200,
+      height: 630,
+      alt: 'MONIQUE Modern Wedding Website Design',
+    },
+  }}
+  extend={{
+    meta: [
+      { name: 'keywords', content: Array.isArray(keywords) ? keywords.join(', ') : keywords },
+      { name: 'author', content: SITE_AUTHOR },
+      { name: 'language', content: SITE_LANGUAGE },
+      { name: 'revisit-after', content: '7 days' },
+      {
+        name: 'robots',
+        content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+      },
+      { name: 'googlebot', content: 'index, follow' },
+      { name: 'generator', content: Astro.generator },
+      { name: 'theme-color', content: '#ffffff' },
+      { name: 'apple-mobile-web-app-capable', content: 'yes' },
+      { name: 'apple-mobile-web-app-status-bar-style', content: 'default' },
+      { property: 'og:site_name', content: SITE_NAME },
+      { property: 'og:locale', content: 'th_TH' },
+    ],
+    link: [{ rel: 'canonical', href: canonicalURL.toString() }],
+  }}
+/>
 
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
-
-<meta itemprop="name" content={title} />
-<meta itemprop="description" content={description} />
-<meta itemprop="image" content={new URL(image, Astro.url)} />
-
-<meta property="og:url" content={Astro.url} />
-<meta property="og:type" content="website" />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
-
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<!-- JSON-LD Structured Data -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    description: description,
+    url: SITE_URL,
+    image: imageURL,
+    inLanguage: SITE_LANGUAGE,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        '@type': 'ImageObject',
+        url: imageURL,
+      },
+    },
+    about: {
+      '@type': 'Event',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      eventStatus: 'https://schema.org/EventScheduled',
+      name: title,
+      description: description,
+      image: imageURL,
+      url: SITE_URL,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${SITE_URL}?s={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  })}
+/>

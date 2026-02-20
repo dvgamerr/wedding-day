@@ -1,0 +1,17 @@
+# MONIQUE Wedding Website - Optimized for Search Engines
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Allow all search engines to crawl images
+User-agent: *
+Allow: /images/
+Allow: /icons/
+
+# Sitemap location
+Sitemap: https://wedding.dvgamerr.app/sitemap-index.xml
+Sitemap: https://wedding.dvgamerr.app/sitemap-0.xml
+
+# Crawl-delay for better server performance
+Crawl-delay: 0

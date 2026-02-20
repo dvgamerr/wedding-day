@@ -9,6 +9,7 @@
     "@cronitorio/cronitor-rum": "^0.4.1",
     "astro": "^5.17.3",
     "astro-google-fonts-optimizer": "^0.2.2",
+    "astro-seo": "^1.1.0",
     "dayjs": "^1.11.19"
   },
   "private": true,
