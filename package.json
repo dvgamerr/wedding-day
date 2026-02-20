@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.2.0",
     "@typescript-eslint/eslint-plugin": "^8.56.0",
     "@typescript-eslint/parser": "^8.56.0",
     "astro-compress": "^2.3.9",
@@ -37,7 +38,9 @@
     "prettier": "^3.8.1",
     "prettier-eslint": "^16.4.2",
     "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.7.2"
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,tsx,astro}": [

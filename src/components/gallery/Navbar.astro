@@ -1,4 +1,16 @@
 ---
+interface ThemeLink {
+  id: string
+  number: string
+  title: string
+}
+
+interface Props {
+  themes?: ThemeLink[]
+}
+
+const { themes = [] } = Astro.props
+
 const navLinks = [
   { id: 'venue', label: 'สถานที่' },
   { id: 'dark-elegant', label: 'แกลเลอรี' },
@@ -7,11 +19,14 @@ const navLinks = [
 ---
 
 <nav
+  id="main-nav"
   class="bg-background/5 fixed top-0 right-0 left-0 z-50 border-b border-white/10 backdrop-blur-md"
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
     <span class="text-foreground font-serif text-base tracking-wide">Wedding Gallery</span>
-    <ul class="hidden items-center gap-8 sm:flex">
+
+    <!-- Default nav -->
+    <ul id="nav-default" class="hidden items-center gap-8 transition-all duration-300 sm:flex">
       {
         navLinks.map((link) => (
           <li>
@@ -25,5 +40,50 @@ const navLinks = [
         ))
       }
     </ul>
+
+    <!-- Theme nav (shown when in gallery) -->
+    <ul
+      id="nav-themes"
+      class="pointer-events-none absolute hidden items-center gap-6 opacity-0 transition-all duration-300 sm:flex"
+    >
+      {
+        themes.map((t) => (
+          <li>
+            <a
+              href={`#${t.id}`}
+              class="text-muted-foreground hover:text-foreground text-[11px] tracking-[0.18em] uppercase transition-colors duration-200"
+            >
+              <span class="mr-1 opacity-50">{t.number}</span>
+              {t.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </nav>
+
+<script>
+  const navDefault = document.getElementById('nav-default')
+  const navThemes = document.getElementById('nav-themes')
+
+  // The first theme section id that triggers the switch
+  const firstThemeSection = document.getElementById('dark-elegant')
+
+  if (firstThemeSection && navDefault && navThemes) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const inGallery = entries[0].isIntersecting
+        if (inGallery) {
+          navDefault.classList.add('opacity-0', 'pointer-events-none', 'absolute')
+          navThemes.classList.remove('opacity-0', 'pointer-events-none', 'absolute')
+        } else {
+          navDefault.classList.remove('opacity-0', 'pointer-events-none', 'absolute')
+          navThemes.classList.add('opacity-0', 'pointer-events-none', 'absolute')
+        }
+      },
+      { threshold: 0, rootMargin: '-64px 0px 0px 0px' }
+    )
+    observer.observe(firstThemeSection)
+  }
+</script>

@@ -103,7 +103,7 @@ const themeLinks = themes.map(({ id, number, title }) => ({ id, number, title })
   </head>
   <body>
     <div id="top" class="min-h-screen">
-      <Navbar />
+      <Navbar themes={themeLinks} />
       <Hero themes={themeLinks} />
       <VenueSection />
       <ScheduleSection />
