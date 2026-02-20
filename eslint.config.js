@@ -27,6 +27,7 @@ export default [
     },
     rules: {
       ...typescript.configs.recommended.rules,
+      quotes: ['error', 'single', { avoidEscape: true }],
     },
   },
   {
