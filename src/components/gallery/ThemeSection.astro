@@ -2,6 +2,7 @@
 export interface GalleryImage {
   src: string
   alt: string
+  orientation?: 'portrait' | 'landscape'
 }
 
 export interface ThemeSectionProps {
@@ -21,13 +22,61 @@ interface Props {
   theme: ThemeSectionProps
 }
 
+type LayoutPattern = 'single-center' | 'single-left' | 'single-right' | 'two-side' | 'single-wide'
+
+interface PhotoGroup {
+  pattern: LayoutPattern
+  photos: GalleryImage[]
+}
+
+function buildPhotoGroups(photos: GalleryImage[]): PhotoGroup[] {
+  const groups: PhotoGroup[] = []
+  let i = 0
+  let patternCycle = 0
+
+  const portraitCycle: { pattern: LayoutPattern; count: number }[] = [
+    { pattern: 'single-center', count: 1 },
+    { pattern: 'two-side', count: 2 },
+    { pattern: 'single-right', count: 1 },
+    { pattern: 'single-center', count: 1 },
+    { pattern: 'single-left', count: 1 },
+    { pattern: 'two-side', count: 2 },
+  ]
+
+  while (i < photos.length) {
+    const current = photos[i]
+
+    if (current.orientation === 'landscape') {
+      groups.push({ pattern: 'single-wide', photos: [current] })
+      i++
+      continue
+    }
+
+    const cycleEntry = portraitCycle[patternCycle % portraitCycle.length]
+
+    if (cycleEntry.count === 2) {
+      const next = photos[i + 1]
+      if (next && next.orientation !== 'landscape') {
+        groups.push({ pattern: 'two-side', photos: [current, next] })
+        i += 2
+      } else {
+        groups.push({ pattern: 'single-center', photos: [current] })
+        i++
+      }
+    } else {
+      groups.push({ pattern: cycleEntry.pattern, photos: [current] })
+      i++
+    }
+
+    patternCycle++
+  }
+
+  return groups
+}
+
 const { theme } = Astro.props
-const isDark = theme.id === 'dark-elegant'
+const photoGroups = buildPhotoGroups(theme.images)
 const photoCount = theme.images.length
-const [feature, ...rest] = theme.images
-const shadowClass = isDark
-  ? 'shadow-[0_4px_20px_rgba(0,0,0,0.5)]'
-  : 'shadow-[0_2px_12px_rgba(0,0,0,0.08)]'
 ---
 
 <section id={theme.id} class={`${theme.bgClass} py-20 md:py-28`}>
@@ -53,47 +102,106 @@ const shadowClass = isDark
       </p>
     </div>
 
-    <!-- Photo Grid -->
-    <div class="space-y-2 md:space-y-3">
-      <!-- Feature image — full width, 16:9 crop -->
-      <div class={`w-full overflow-hidden rounded-sm ${shadowClass}`}>
-        <div class="relative w-full" style="padding-bottom: 56.25%">
-          <img
-            src={feature.src}
-            alt={feature.alt}
-            loading="lazy"
-            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-          />
-        </div>
-      </div>
-
-      <!-- 3-column uniform grid -->
-      <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 md:gap-3">
+    <!-- Photo groups -->
+    <div class="py-8 md:py-12">
+      <div class="flex flex-col gap-20 md:gap-28 lg:gap-36">
         {
-          rest.map((img) => (
-            <div class={`overflow-hidden rounded-sm ${shadowClass}`}>
-              <div class="relative w-full" style="padding-bottom: 125%">
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading="lazy"
-                  class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.04]"
-                />
-              </div>
-            </div>
-          ))
+          photoGroups.map((group) => {
+            if (group.pattern === 'single-center') {
+              return (
+                <div class="mx-auto w-full max-w-sm md:max-w-md">
+                  <div class="relative w-full overflow-hidden" style="aspect-ratio: 2/3">
+                    <img
+                      src={group.photos[0].src}
+                      alt={group.photos[0].alt}
+                      loading="lazy"
+                      class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    />
+                  </div>
+                </div>
+              )
+            }
+            if (group.pattern === 'single-wide') {
+              return (
+                <div class="mx-auto w-full max-w-2xl lg:max-w-3xl">
+                  <div class="relative w-full overflow-hidden" style="aspect-ratio: 3/2">
+                    <img
+                      src={group.photos[0].src}
+                      alt={group.photos[0].alt}
+                      loading="lazy"
+                      class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    />
+                  </div>
+                </div>
+              )
+            }
+            if (group.pattern === 'single-left') {
+              return (
+                <div class="mr-auto w-full max-w-sm md:max-w-md md:pl-8 lg:pl-16">
+                  <div class="relative w-full overflow-hidden" style="aspect-ratio: 2/3">
+                    <img
+                      src={group.photos[0].src}
+                      alt={group.photos[0].alt}
+                      loading="lazy"
+                      class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    />
+                  </div>
+                </div>
+              )
+            }
+            if (group.pattern === 'single-right') {
+              return (
+                <div class="ml-auto w-full max-w-sm md:max-w-md md:pr-8 lg:pr-16">
+                  <div class="relative w-full overflow-hidden" style="aspect-ratio: 2/3">
+                    <img
+                      src={group.photos[0].src}
+                      alt={group.photos[0].alt}
+                      loading="lazy"
+                      class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                    />
+                  </div>
+                </div>
+              )
+            }
+            if (group.pattern === 'two-side') {
+              return (
+                <div class="flex flex-col items-center gap-10 md:flex-row md:items-start md:gap-8 lg:gap-12">
+                  <div class="w-full max-w-xs md:max-w-none md:flex-1">
+                    <div class="relative w-full overflow-hidden" style="aspect-ratio: 2/3">
+                      <img
+                        src={group.photos[0].src}
+                        alt={group.photos[0].alt}
+                        loading="lazy"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                      />
+                    </div>
+                  </div>
+                  <div class="w-full max-w-xs md:mt-16 md:max-w-none md:flex-1 lg:mt-24">
+                    <div class="relative w-full overflow-hidden" style="aspect-ratio: 2/3">
+                      <img
+                        src={group.photos[1].src}
+                        alt={group.photos[1].alt}
+                        loading="lazy"
+                        class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+          })
         }
       </div>
-    </div>
 
-    <!-- Back to top -->
-    <div class="mt-16 text-center">
-      <a
-        href="#top"
-        class={`text-[10px] tracking-[0.25em] uppercase ${theme.subtitleClass} hover:opacity-100 transition-opacity`}
-      >
-        ↑ Back to top
-      </a>
+      <!-- Back to top -->
+      <div class="mt-16 text-center">
+        <a
+          href="#top"
+          class={`text-[10px] tracking-[0.25em] uppercase ${theme.subtitleClass} hover:opacity-100 transition-opacity`}
+        >
+          ↑ Back to top
+        </a>
+      </div>
     </div>
   </div>
 </section>
