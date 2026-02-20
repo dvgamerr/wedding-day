@@ -7,7 +7,9 @@ import Hero from '@/components/Hero.astro'
 import VenueSection from '@/components/VenueSection.astro'
 import ScheduleSection from '@/components/ScheduleSection.astro'
 import ThemeSection from '@/components/ThemeSection.astro'
-import FAQFooter from '@/components/FAQFooter.astro'
+import FAQSection from '@/components/FAQSection.astro'
+import CreditsSection from '@/components/CreditsSection.astro'
+import Footer from '@/components/Footer.astro'
 
 import { SITE_TITLE, SITE_DESCRIPTION } from '@/config'
 import { themes } from '@/data/themes'
@@ -41,7 +43,9 @@ const themeLinks = themes.map(({ id, number, title }) => ({ id, number, title })
       <div id="gallery">
         {themes.map((theme) => <ThemeSection theme={theme} />)}
       </div>
-      <FAQFooter />
+      <FAQSection />
+      <CreditsSection />
+      <Footer />
     </div>
   </body>
 </html>
