@@ -3,7 +3,7 @@
   "version": "1.2.0",
   "type": "module",
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/mdx": "^5.0.3",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@cronitorio/cronitor-rum": "^0.4.1",
