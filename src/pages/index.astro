@@ -47,5 +47,50 @@ const themeLinks = themes.map(({ id, number, title }) => ({ id, number, title })
       <CreditsSection />
       <Footer />
     </div>
+    <script>
+      const root = document.documentElement
+      const themeSections = Array.from(document.querySelectorAll('[data-theme-section]'))
+
+      if (root && themeSections.length > 0) {
+        const visibleRatios = new Map()
+
+        const updateActiveTheme = () => {
+          let activeTheme = ''
+          let maxRatio = 0
+
+          for (const section of themeSections) {
+            const ratio = visibleRatios.get(section.id) ?? 0
+            if (ratio > maxRatio) {
+              maxRatio = ratio
+              activeTheme = section.getAttribute('data-theme-section') || ''
+            }
+          }
+
+          if (activeTheme && maxRatio >= 0.18) {
+            root.setAttribute('data-active-theme', activeTheme)
+          } else {
+            root.removeAttribute('data-active-theme')
+          }
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              visibleRatios.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0)
+            }
+            updateActiveTheme()
+          },
+          {
+            threshold: [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9],
+            rootMargin: '-20% 0px -30% 0px',
+          }
+        )
+
+        for (const section of themeSections) {
+          visibleRatios.set(section.id, 0)
+          observer.observe(section)
+        }
+      }
+    </script>
   </body>
 </html>

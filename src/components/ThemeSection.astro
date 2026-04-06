@@ -79,8 +79,12 @@ const photoGroups = buildPhotoGroups(theme.images)
 const photoCount = theme.images.length
 ---
 
-<section id={theme.id} class={`${theme.bgClass} py-20 md:py-28`}>
-  <div class="mx-auto max-w-6xl px-6">
+<section
+  id={theme.id}
+  data-theme-section={theme.id}
+  class={`theme-section ${theme.bgClass} py-20 md:py-28`}
+>
+  <div class="relative z-10 mx-auto max-w-6xl px-6">
     <!-- Header -->
     <div class="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
