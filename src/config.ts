@@ -3,7 +3,7 @@ import 'dayjs/locale/th'
 
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_URL = 'https://wedding.dvgamerr.app'
+export const SITE_URL = 'https://wedding.ourkk.com'
 export const SITE_TITLE = 'กิ่งกาญจน์ & กัณฑ์อเนก | Wedding & Pre wedding by MONIQUE'
 export const SITE_NAME = 'กิ่งกาญจน์ & กัณฑ์อเนก'
 

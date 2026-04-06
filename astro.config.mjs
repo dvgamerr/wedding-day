@@ -9,7 +9,7 @@ import sitemap from '@astrojs/sitemap'
 // https://astro.build/config
 export default defineConfig({
   prefetch: true,
-  site: 'https://wedding.dvgamerr.app',
+  site: 'https://wedding.ourkk.com',
   output: 'static',
   integrations: [mdx(), sitemap(), compress()],
   security: {

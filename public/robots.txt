@@ -10,8 +10,8 @@ Allow: /images/
 Allow: /icons/
 
 # Sitemap location
-Sitemap: https://wedding.dvgamerr.app/sitemap-index.xml
-Sitemap: https://wedding.dvgamerr.app/sitemap-0.xml
+Sitemap: https://wedding.ourkk.com/sitemap-index.xml
+Sitemap: https://wedding.ourkk.com/sitemap-0.xml
 
 # Crawl-delay for better server performance
 Crawl-delay: 0
